@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ajovi_article Studio
+
+This is a [Next.js](https://nextjs.org) App Router project.
+
+## Project Structure
+
+- `app/page.js` is the homepage and contains the article/presentation UI.
+- `app/layout.js` contains the document shell and metadata.
+- `app/globals.css` contains global styles.
+
+Do not add an `index.html` file to the project root. Next.js uses `app/page.js` as the `/` route.
 
 ## Getting Started
 
