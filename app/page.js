@@ -19,6 +19,7 @@ export default function Home() {
   const [countdown, setCountdown] = useState(20);
   const [activeTab, setActiveTab] = useState('article'); // 'article' or 'presentation'
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedContract, setSelectedContract] = useState('mudharabah');
   const [dateTime, setDateTime] = useState({ time: '', date: '' });
   const [showFullscreenPhoto, setShowFullscreenPhoto] = useState(false);
   const [isPresentationFullscreen, setIsPresentationFullscreen] = useState(false);
@@ -361,7 +362,112 @@ export default function Home() {
       )
     },
     {
-      title: "6. Conclusion & Recommendations",
+      title: "6. Islamic Contracts: Explanation & Application",
+      subtitle: "Click a contract to reveal its explanation and North Cikarang example",
+      category: "Contract Explanation",
+      content: (
+        <div className="space-y-6 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              {
+                id: 'mudharabah',
+                name: 'Mudharabah',
+                type: 'Profit-Sharing Partnership',
+                color: 'blue',
+                explanation: 'A trust-based partnership in which the Islamic bank provides 100% of the capital, while the entrepreneur provides management, labor, and business expertise. Profit is shared according to a pre-agreed ratio. When a genuine loss is not caused by negligence or breach of contract, the bank bears the financial loss and the entrepreneur loses the value of their effort.',
+                example: 'Budi opens a coffee shop in North Cikarang with IDR 50,000,000 from an Islamic bank. Under a 60:40 agreement, a monthly net profit of IDR 5,000,000 gives Budi IDR 3,000,000 and the bank IDR 2,000,000. If the business suffers an unexpected market loss, the bank absorbs the monetary loss instead of charging interest.'
+              },
+              {
+                id: 'musyarakah',
+                name: 'Musyarakah',
+                type: 'Joint Venture Partnership',
+                color: 'indigo',
+                explanation: 'A partnership in which two or more parties combine capital, assets, or skills to finance a business, project, or acquisition. Profits follow the agreed operational ratio, while financial losses are distributed strictly according to each partner\'s capital contribution.',
+                example: 'Siti contributes IDR 100,000,000 (40%) and an Islamic financial institution contributes IDR 150,000,000 (60%) to co-own a commercial shophouse in North Cikarang. Rental income follows the agreed terms, while any property loss is divided according to the 40:60 capital shares.'
+              },
+              {
+                id: 'murabahah',
+                name: 'Murabahah',
+                type: 'Cost-Plus Financing',
+                color: 'teal',
+                explanation: 'A transparent sale-and-purchase contract. The bank buys the customer\'s requested asset, takes legal ownership, and resells it at the original cost plus an explicitly agreed profit margin. The customer pays fixed installments, with the acquisition cost and margin disclosed clearly.',
+                example: 'Ani needs a motorcycle in North Cikarang. The bank buys it from a dealership for IDR 20,000,000 and sells it to Ani for IDR 23,000,000, including a transparent IDR 3,000,000 margin. Ani pays the fixed total in equal installments over two years.'
+              }
+            ].map((contract) => {
+              const isSelected = selectedContract === contract.id;
+              const colorStyles = {
+                blue: isSelected ? 'border-blue-600 bg-blue-50 shadow-blue-100' : 'border-blue-200 bg-white hover:border-blue-400',
+                indigo: isSelected ? 'border-indigo-600 bg-indigo-50 shadow-indigo-100' : 'border-indigo-200 bg-white hover:border-indigo-400',
+                teal: isSelected ? 'border-teal-600 bg-teal-50 shadow-teal-100' : 'border-teal-200 bg-white hover:border-teal-400'
+              };
+
+              return (
+                <button
+                  key={contract.id}
+                  type="button"
+                  onClick={() => setSelectedContract(contract.id)}
+                  aria-pressed={isSelected}
+                  className={`text-left p-5 rounded-xl border-2 shadow-sm transition-all hover:-translate-y-1 ${colorStyles[contract.color]}`}
+                >
+                  <span className="block font-bold text-xl">{contract.name}</span>
+                  <span className="block mt-2 text-base font-semibold opacity-75">{contract.type}</span>
+                  <span className="block mt-4 text-base font-bold text-blue-700">{isSelected ? 'Selected - view explanation below' : 'Click to view explanation'}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {(() => {
+            const contract = [
+              {
+                id: 'mudharabah',
+                name: 'Mudharabah',
+                type: 'Profit-Sharing Partnership',
+                color: 'blue',
+                explanation: 'A trust-based partnership in which the Islamic bank provides 100% of the capital, while the entrepreneur provides management, labor, and business expertise. Profit is shared according to a pre-agreed ratio. When a genuine loss is not caused by negligence or breach of contract, the bank bears the financial loss and the entrepreneur loses the value of their effort.',
+                example: 'Budi opens a coffee shop in North Cikarang with IDR 50,000,000 from an Islamic bank. Under a 60:40 agreement, a monthly net profit of IDR 5,000,000 gives Budi IDR 3,000,000 and the bank IDR 2,000,000. If the business suffers an unexpected market loss, the bank absorbs the monetary loss instead of charging interest.'
+              },
+              {
+                id: 'musyarakah',
+                name: 'Musyarakah',
+                type: 'Joint Venture Partnership',
+                color: 'indigo',
+                explanation: 'A partnership in which two or more parties combine capital, assets, or skills to finance a business, project, or acquisition. Profits follow the agreed operational ratio, while financial losses are distributed strictly according to each partner\'s capital contribution.',
+                example: 'Siti contributes IDR 100,000,000 (40%) and an Islamic financial institution contributes IDR 150,000,000 (60%) to co-own a commercial shophouse in North Cikarang. Rental income follows the agreed terms, while any property loss is divided according to the 40:60 capital shares.'
+              },
+              {
+                id: 'murabahah',
+                name: 'Murabahah',
+                type: 'Cost-Plus Financing',
+                color: 'teal',
+                explanation: 'A transparent sale-and-purchase contract. The bank buys the customer\'s requested asset, takes legal ownership, and resells it at the original cost plus an explicitly agreed profit margin. The customer pays fixed installments, with the acquisition cost and margin disclosed clearly.',
+                example: 'Ani needs a motorcycle in North Cikarang. The bank buys it from a dealership for IDR 20,000,000 and sells it to Ani for IDR 23,000,000, including a transparent IDR 3,000,000 margin. Ani pays the fixed total in equal installments over two years.'
+              }
+            ].find((item) => item.id === selectedContract);
+
+            const panelStyles = {
+              blue: 'border-blue-600 bg-blue-50/70 text-blue-900',
+              indigo: 'border-indigo-600 bg-indigo-50/70 text-indigo-900',
+              teal: 'border-teal-600 bg-teal-50/70 text-teal-900'
+            };
+
+            return (
+              <div className={`p-6 rounded-2xl border-l-8 space-y-4 ${panelStyles[contract.color]}`}>
+                <div>
+                  <h3 className="font-bold text-2xl">{contract.name}: {contract.type}</h3>
+                  <p className="mt-3 text-lg leading-relaxed"><strong>Explanation:</strong> {contract.explanation}</p>
+                </div>
+                <div className="p-5 rounded-xl bg-white/80 border border-white shadow-sm">
+                  <p className="text-lg leading-relaxed"><strong>Article-based example:</strong> {contract.example}</p>
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+      )
+    },
+    {
+      title: "7. Conclusion & Recommendations",
       subtitle: "Summary of Study Outcomes",
       category: "Conclusion",
       content: (
