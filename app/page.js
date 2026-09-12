@@ -667,13 +667,12 @@ Recommendations:
                 }
 
                 .welcome-panel {
-                  width: 82vw;
-                  max-width: 18rem;
+                  width: min(82vw, 18rem);
+                  max-width: none;
                   max-height: 68dvh;
                   overflow-y: auto;
                   padding: 0.8rem;
-                  margin-left: auto;
-                  margin-right: auto;
+                  margin: 0;
                   gap: 0.55rem;
                   background: rgba(255, 255, 255, 0.74);
                   border-color: rgba(255, 255, 255, 0.72);
@@ -712,8 +711,8 @@ Recommendations:
 
               @media (max-width: 380px) {
                 .welcome-panel {
-                  width: 76vw;
-                  max-width: 15rem;
+                  width: min(76vw, 15rem);
+                  max-width: none;
                   max-height: 62dvh;
                   padding: 0.65rem;
                 }
@@ -780,7 +779,7 @@ Recommendations:
           </div>
         </div>
 
-        <div className="welcome-panel absolute top-4 right-4 z-10 flex flex-col items-center justify-center p-5 sm:p-8 bg-white border border-slate-200 rounded-2xl shadow-xl max-w-md w-full text-center space-y-4 sm:space-y-6">
+        <div className="welcome-panel absolute bottom-4 right-4 z-10 flex flex-col items-center justify-center p-5 sm:p-8 bg-white/90 backdrop-blur-md border border-white/80 rounded-2xl shadow-2xl max-w-sm w-[calc(100%-2rem)] text-center space-y-4 sm:space-y-6">
           
           <div>
             <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">Ajovi_article Studio</h1>
