@@ -1407,35 +1407,60 @@ Recommendations:
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
                 box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-                font-size: max(1rem, 1.15cqi);
-                line-height: 1.6;
+                font-size: 1.2rem;
+                line-height: 1.65;
               }
 
               .presentation-content-box p,
               .presentation-content-box li,
-              .presentation-content-box table {
-                font-size: max(1rem, 1.05cqi);
-                line-height: 1.6;
+              .presentation-content-box table,
+              .presentation-content-box > div {
+                font-size: 1.2rem !important;
+                line-height: 1.65;
               }
 
               .presentation-content-box h2 {
-                font-size: max(1.5rem, 1.8cqi);
+                font-size: 1.85rem;
                 line-height: 1.2;
               }
 
               .presentation-content-box h3 {
-                font-size: max(1.25rem, 1.45cqi);
+                font-size: 1.45rem;
                 line-height: 1.3;
               }
 
               .presentation-content-box h4 {
-                font-size: max(1.1rem, 1.2cqi);
+                font-size: 1.25rem;
                 line-height: 1.35;
               }
 
               .presentation-content-box .text-xs,
               .presentation-content-box .text-sm {
-                font-size: max(1rem, 1.05cqi);
+                font-size: 1.2rem !important;
+              }
+
+              @container (min-width: 900px) {
+                .presentation-content-box,
+                .presentation-content-box p,
+                .presentation-content-box li,
+                .presentation-content-box table,
+                .presentation-content-box > div,
+                .presentation-content-box .text-xs,
+                .presentation-content-box .text-sm {
+                  font-size: 1.35rem !important;
+                }
+
+                .presentation-content-box h2 {
+                  font-size: 2.15rem;
+                }
+
+                .presentation-content-box h3 {
+                  font-size: 1.7rem;
+                }
+
+                .presentation-content-box h4 {
+                  font-size: 1.4rem;
+                }
               }
 
               .nav-glow {
@@ -1490,7 +1515,7 @@ Recommendations:
                 .presentation-content-box table,
                 .presentation-content-box .text-xs,
                 .presentation-content-box .text-sm {
-                  font-size: 1rem;
+                  font-size: 1.1rem !important;
                   line-height: 1.55;
                 }
 
