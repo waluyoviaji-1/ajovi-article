@@ -1305,7 +1305,7 @@ Recommendations:
         ) : (
           
           /* Presentation View */
-          <div className={`w-full max-w-[1700px] mx-auto p-6 sm:p-8 lg:p-10 rounded-2xl border border-slate-200 bg-white text-slate-800 flex flex-col justify-between min-h-[calc(100vh-200px)] shadow-sm ${isPresentationFullscreen ? 'sm:p-10 lg:p-12' : ''}`}>
+          <div className={`w-full max-w-[1700px] mx-auto p-4 sm:p-6 lg:p-8 rounded-2xl border border-slate-200 bg-white text-slate-800 flex flex-col min-h-[calc(100vh-190px)] shadow-sm ${isPresentationFullscreen ? 'sm:p-8 lg:p-10' : ''}`}>
             <style jsx>{`
               @keyframes presentationEnter {
                 0% {
@@ -1365,13 +1365,15 @@ Recommendations:
 
               .presentation-card {
                 container-type: inline-size;
+                flex: 1 1 auto;
+                min-height: clamp(34rem, calc(100vh - 350px), 64rem);
                 animation: presentationEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
                 background: linear-gradient(135deg, rgba(255,255,255,0.62), rgba(191,219,254,0.18), rgba(255,255,255,0.52));
                 border: 1px solid rgba(148, 163, 184, 0.25);
                 backdrop-filter: blur(16px);
                 -webkit-backdrop-filter: blur(16px);
                 border-radius: 1.75rem;
-                padding: 2rem;
+                padding: 2.5rem;
                 box-shadow: 0 30px 80px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255,255,255,0.7);
               }
 
@@ -1407,36 +1409,37 @@ Recommendations:
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
                 box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-                font-size: 1.2rem;
-                line-height: 1.65;
+                flex: 1 1 auto;
+                font-size: 1.45rem;
+                line-height: 1.7;
               }
 
               .presentation-content-box p,
               .presentation-content-box li,
               .presentation-content-box table,
               .presentation-content-box > div {
-                font-size: 1.2rem !important;
-                line-height: 1.65;
+                font-size: 1.45rem !important;
+                line-height: 1.7;
               }
 
               .presentation-content-box h2 {
-                font-size: 1.85rem;
+                font-size: 2.2rem;
                 line-height: 1.2;
               }
 
               .presentation-content-box h3 {
-                font-size: 1.45rem;
+                font-size: 1.7rem;
                 line-height: 1.3;
               }
 
               .presentation-content-box h4 {
-                font-size: 1.25rem;
+                font-size: 1.45rem;
                 line-height: 1.35;
               }
 
               .presentation-content-box .text-xs,
               .presentation-content-box .text-sm {
-                font-size: 1.2rem !important;
+                font-size: 1.45rem !important;
               }
 
               @container (min-width: 900px) {
@@ -1447,19 +1450,19 @@ Recommendations:
                 .presentation-content-box > div,
                 .presentation-content-box .text-xs,
                 .presentation-content-box .text-sm {
-                  font-size: 1.35rem !important;
+                  font-size: 1.65rem !important;
                 }
 
                 .presentation-content-box h2 {
-                  font-size: 2.15rem;
+                  font-size: 2.5rem;
                 }
 
                 .presentation-content-box h3 {
-                  font-size: 1.7rem;
+                  font-size: 1.95rem;
                 }
 
                 .presentation-content-box h4 {
-                  font-size: 1.4rem;
+                  font-size: 1.65rem;
                 }
               }
 
@@ -1488,7 +1491,8 @@ Recommendations:
 
               @media (max-width: 640px) {
                 .presentation-card {
-                  padding: 1rem;
+                  min-height: calc(100dvh - 330px);
+                  padding: 1.25rem;
                   border-radius: 1.15rem;
                 }
 
@@ -1507,7 +1511,7 @@ Recommendations:
                 }
 
                 .presentation-content-box h2 {
-                  font-size: 1.5rem;
+                  font-size: 1.85rem;
                 }
 
                 .presentation-content-box p,
@@ -1515,7 +1519,7 @@ Recommendations:
                 .presentation-content-box table,
                 .presentation-content-box .text-xs,
                 .presentation-content-box .text-sm {
-                  font-size: 1.1rem !important;
+                  font-size: 1.25rem !important;
                   line-height: 1.55;
                 }
 
