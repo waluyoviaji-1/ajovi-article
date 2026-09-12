@@ -996,7 +996,8 @@ Recommendations:
       </header>
 
       {/* Navigation Tabs and Download .DOC button */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full pt-4 sm:pt-6 pb-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
+      <div className="sticky top-16 z-40 w-full border-b border-slate-200/80 bg-white/95 shadow-md backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full py-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
         <div className="flex w-full sm:w-auto p-1 rounded-xl bg-slate-200/60 dark:bg-slate-800 border border-slate-300/50 dark:border-slate-700">
           <button
             onClick={() => setActiveTab('article')}
@@ -1040,6 +1041,7 @@ Recommendations:
             <span>Download Complete Research (.DOC)</span>
           </button>
         </div>
+      </div>
       </div>
 
       {/* Main Content Area */}
