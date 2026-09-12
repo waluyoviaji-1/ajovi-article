@@ -1364,6 +1364,7 @@ Recommendations:
               }
 
               .presentation-card {
+                container-type: inline-size;
                 animation: presentationEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
                 background: linear-gradient(135deg, rgba(255,255,255,0.62), rgba(191,219,254,0.18), rgba(255,255,255,0.52));
                 border: 1px solid rgba(148, 163, 184, 0.25);
@@ -1406,6 +1407,35 @@ Recommendations:
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
                 box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+                font-size: max(1rem, 1.15cqi);
+                line-height: 1.6;
+              }
+
+              .presentation-content-box p,
+              .presentation-content-box li,
+              .presentation-content-box table {
+                font-size: max(1rem, 1.05cqi);
+                line-height: 1.6;
+              }
+
+              .presentation-content-box h2 {
+                font-size: max(1.5rem, 1.8cqi);
+                line-height: 1.2;
+              }
+
+              .presentation-content-box h3 {
+                font-size: max(1.25rem, 1.45cqi);
+                line-height: 1.3;
+              }
+
+              .presentation-content-box h4 {
+                font-size: max(1.1rem, 1.2cqi);
+                line-height: 1.35;
+              }
+
+              .presentation-content-box .text-xs,
+              .presentation-content-box .text-sm {
+                font-size: max(1rem, 1.05cqi);
               }
 
               .nav-glow {
@@ -1452,7 +1482,16 @@ Recommendations:
                 }
 
                 .presentation-content-box h2 {
-                  font-size: 1.25rem;
+                  font-size: 1.5rem;
+                }
+
+                .presentation-content-box p,
+                .presentation-content-box li,
+                .presentation-content-box table,
+                .presentation-content-box .text-xs,
+                .presentation-content-box .text-sm {
+                  font-size: 1rem;
+                  line-height: 1.55;
                 }
 
                 .presentation-content-box .grid-cols-5 {
