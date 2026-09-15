@@ -511,81 +511,61 @@ export default function Home() {
     }
   ];
 
-  const powerpointDeckData = [
-    {
-      title: 'Research Overview',
-      subtitle: 'The Influence of Public Perception on Islamic Banking',
-      bullets: [
-        'Study focus: community interest in choosing Islamic banking products in North Cikarang District.',
-        'Main variables: knowledge, trust, and products/services quality.',
-        'Research method: quantitative survey with 100 respondents.'
+  const powerpointDeckData = slides.map((slide, index) => {
+    const baseBullets = [
+      `Category: ${slide.category}`,
+      `Study focus: ${slide.subtitle}`
+    ];
+
+    const sectionBullets = {
+      0: [
+        'Research theme: public perception and Islamic banking adoption.',
+        'Location: North Cikarang District, Bekasi Regency.',
+        'Method: quantitative study with 100 respondents.'
+      ],
+      1: [
+        'Islamic banking offers an ethical alternative based on fairness and transparency.',
+        'Public perception shapes the choice between Islamic and conventional banking.',
+        'The study highlights misconceptions and information gaps in the community.'
+      ],
+      2: [
+        'X1: Knowledge of Islamic banking principles and contracts.',
+        'X2: Trust in Sharia-compliant services and financial security.',
+        'X3: Product and service quality as a driver of consumer interest.'
+      ],
+      3: [
+        'Survey instrument: 5-point Likert scale from strongly disagree to strongly agree.',
+        'Respondents: community members in North Cikarang District.',
+        'Objective: measuring the influence of perception on adoption interest.'
+      ],
+      4: [
+        'Key result: public perception significantly affects interest in Islamic banking.',
+        'The model explains 68% of the variance in adoption interest.',
+        'The remaining variance reflects other external factors not examined here.'
+      ],
+      5: [
+        'Mudharabah: profit-sharing partnership model.',
+        'Musyarakah: joint venture partnership with shared profit and loss.',
+        'Murabahah: transparent cost-plus financing arrangement.'
+      ],
+      6: [
+        'Conclusion: perception, trust, and service quality matter in adoption.',
+        'Recommendation: improve literacy, transparency, and product communication.',
+        'Future research: expand geography and add other relevant variables.'
+      ],
+      7: [
+        'Closing message: keep moving forward despite uncertainty.',
+        'Success comes from resilience, learning, and consistency.',
+        'This study reflects long-term commitment to understanding the market.'
       ]
-    },
-    {
-      title: 'Introduction & Background',
-      subtitle: 'Islamic banking as an alternative economic system',
-      bullets: [
-        'Islamic banking is built on fairness, transparency, and the prohibition of usury.',
-        'Public perception influences whether a community chooses Islamic or conventional financial products.',
-        'The study addresses misconceptions and limited information in the local community.'
-      ]
-    },
-    {
-      title: 'Research Variables',
-      subtitle: 'Independent and dependent variables',
-      bullets: [
-        'X1: Knowledge about Islamic banking principles and contracts.',
-        'X2: Trust in sharia-compliant institutions and transparency.',
-        'X3: Product and service quality from Islamic banking providers.',
-        'Y: Interest in choosing Islamic banking products.'
-      ]
-    },
-    {
-      title: 'Methodology',
-      subtitle: 'Likert-scale survey and quantitative analysis',
-      bullets: [
-        'Measurement was conducted using a five-point Likert scale from Strongly Disagree to Strongly Agree.',
-        'Sample size: 100 respondents from the North Cikarang community.',
-        'Analysis uses descriptive and inferential statistics to test relationships among variables.'
-      ]
-    },
-    {
-      title: 'Key Findings',
-      subtitle: 'Average scores and interpretation',
-      bullets: [
-        'Knowledge (X1), trust (X2), and products/services (X3) show meaningful influence on interest (Y).',
-        'The regression model explains 68% of the variance in interest in choosing Islamic banking.',
-        'The remaining 32% may reflect other external factors not examined in the study.'
-      ]
-    },
-    {
-      title: 'Contract Examples',
-      subtitle: 'Mudharabah, Musyarakah, and Murabahah',
-      bullets: [
-        'Mudharabah: profit-sharing partnership where the bank provides capital and the entrepreneur manages the venture.',
-        'Musyarakah: joint venture with shared capital and profit-loss distribution according to agreement.',
-        'Murabahah: transparent cost-plus financing where the bank purchases the asset and resells it to the customer.'
-      ]
-    },
-    {
-      title: 'Conclusion & Recommendations',
-      subtitle: 'Strategic insights for institutions and consumers',
-      bullets: [
-        'Public perception significantly affects the decision to choose Islamic banking products.',
-        'Islamic banks should improve education, transparency, and digital access.',
-        'Future researchers should broaden the geographic scope and add more variables.'
-      ]
-    },
-    {
-      title: 'Closing Message',
-      subtitle: 'Keep pedaling even when the road feels difficult',
-      bullets: [
-        'Success is reached by persistence, not by comfort alone.',
-        'The study reminds us that consistent effort continues to move us forward.',
-        'This work is a reflection of resilience, learning, and long-term commitment.'
-      ]
-    }
-  ];
+    };
+
+    return {
+      title: slide.title,
+      subtitle: slide.subtitle,
+      bullets: [...baseBullets, ...(sectionBullets[index] || [slide.category])]
+    };
+  });
 
   useEffect(() => {
     if (activeTab !== 'presentation' || currentSlide !== slides.length - 1) return undefined;
@@ -604,73 +584,174 @@ export default function Home() {
     pptx.company = 'Ajovi_article';
     pptx.subject = 'Islamic Banking Presentation';
     pptx.title = 'The Influence of Public Perception on Islamic Banking';
+    pptx.theme = {
+      colorScheme: {
+        accent1: '2563EB',
+        accent2: '0F172A',
+        accent3: '10B981',
+        accent4: 'F59E0B',
+        accent5: '8B5CF6',
+        accent6: 'E2E8F0',
+        hlink: '2563EB',
+        folHlink: '1D4ED8'
+      },
+      fontFace: 'Aptos'
+    };
+
+    const cover = pptx.addSlide();
+    cover.background = { color: 'F8FAFC' };
+    cover.addShape(pptx.ShapeType.rect, {
+      x: 0,
+      y: 0,
+      w: 13.333,
+      h: 7.5,
+      fill: { color: '0F172A' },
+      line: { color: '0F172A', width: 0 }
+    });
+    cover.addText('Ajovi_article', {
+      x: 0.7,
+      y: 0.5,
+      w: 4,
+      h: 0.4,
+      fontSize: 20,
+      bold: true,
+      color: 'FFFFFF',
+      margin: 0.02
+    });
+    cover.addText('The Influence of Public Perception on Islamic Banking', {
+      x: 0.9,
+      y: 1.8,
+      w: 11.5,
+      h: 1.7,
+      fontSize: 28,
+      bold: true,
+      color: 'FFFFFF',
+      breakLine: true,
+      valign: 'middle',
+      margin: 0.08
+    });
+    cover.addText('A Study of the Community in North Cikarang District, Bekasi Regency', {
+      x: 0.9,
+      y: 3.5,
+      w: 10,
+      h: 0.7,
+      fontSize: 16,
+      italic: true,
+      color: 'E2E8F0'
+    });
+    cover.addShape(pptx.ShapeType.rect, {
+      x: 0.9,
+      y: 5.2,
+      w: 4.8,
+      h: 0.8,
+      fill: { color: '2563EB' },
+      line: { color: '2563EB', width: 0 },
+      radius: 0.15
+    });
+    cover.addText('Research Presentation', {
+      x: 1.1,
+      y: 5.38,
+      w: 4,
+      h: 0.4,
+      fontSize: 18,
+      bold: true,
+      color: 'FFFFFF'
+    });
+    cover.addText('Prepared by Ajovi_article Studio', {
+      x: 0.9,
+      y: 6.4,
+      w: 5.4,
+      h: 0.4,
+      fontSize: 12,
+      color: 'E2E8F0'
+    });
 
     powerpointDeckData.forEach((slideData, index) => {
       const slide = pptx.addSlide();
       slide.background = { color: 'F8FAFC' };
 
+      slide.addShape(pptx.ShapeType.rect, {
+        x: 0,
+        y: 0,
+        w: 13.333,
+        h: 0.5,
+        fill: { color: '2563EB' },
+        line: { color: '2563EB', width: 0 }
+      });
+
       slide.addText('Ajovi_article', {
-        x: 0.5,
-        y: 0.2,
-        w: 2.0,
-        h: 0.3,
+        x: 0.45,
+        y: 0.14,
+        w: 2.2,
+        h: 0.2,
         fontSize: 12,
         bold: true,
-        color: '0F172A',
-        opacity: 0.85
+        color: 'FFFFFF'
       });
 
       slide.addText(slideData.title, {
-        x: 0.65,
-        y: 0.7,
-        w: 12.0,
-        h: 0.7,
-        fontSize: 24,
+        x: 0.7,
+        y: 0.8,
+        w: 9.7,
+        h: 0.9,
+        fontSize: 22,
         bold: true,
         color: '0F172A',
-        breakLine: true
+        breakLine: true,
+        margin: 0.04
       });
 
       slide.addText(slideData.subtitle, {
-        x: 0.7,
-        y: 1.35,
-        w: 11.5,
-        h: 0.45,
-        fontSize: 14,
+        x: 0.8,
+        y: 1.55,
+        w: 10.8,
+        h: 0.5,
+        fontSize: 12,
         italic: true,
-        color: '334155'
+        color: '475569'
       });
 
       slide.addShape(pptx.ShapeType.line, {
-        x: 0.7,
-        y: 1.8,
-        w: 11.6,
+        x: 0.8,
+        y: 2.0,
+        w: 11.7,
         h: 0,
         fill: { color: '2563EB' },
         line: { color: '2563EB', width: 1.5 }
       });
 
-      slide.addText(slideData.bullets, {
-        x: 0.9,
-        y: 2.2,
-        w: 11.2,
+      slide.addText(slideData.bullets.join('\n'), {
+        x: 0.95,
+        y: 2.3,
+        w: 11.3,
         h: 3.8,
-        fontSize: 19,
+        fontSize: 16,
         color: '0F172A',
-        bullet: { indent: 0.25 },
+        bullet: { indent: 0.28 },
         margin: 0.12,
         valign: 'middle',
         breakLine: true
       });
 
+      slide.addShape(pptx.ShapeType.rect, {
+        x: 11.5,
+        y: 6.1,
+        w: 1.4,
+        h: 0.45,
+        fill: { color: 'DBEAFE' },
+        line: { color: 'DBEAFE', width: 0 },
+        radius: 0.08
+      });
+
       slide.addText(`${index + 1} / ${powerpointDeckData.length}`, {
         x: 11.55,
-        y: 6.9,
-        w: 1.2,
-        h: 0.25,
+        y: 6.18,
+        w: 1.25,
+        h: 0.26,
         fontSize: 10,
-        color: '475569',
-        align: 'right'
+        color: '1D4ED8',
+        bold: true,
+        align: 'center'
       });
     });
 
@@ -1181,29 +1262,32 @@ Recommendations:
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
-          {activeTab === 'presentation' && (
+          {activeTab === 'presentation' ? (
+            <>
+              <button
+                type="button"
+                onClick={togglePresentationFullscreen}
+                className="flex-1 sm:flex-none justify-center flex items-center space-x-2 px-3 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-semibold shadow-lg transition-all hover:bg-slate-800"
+              >
+                <span>{isPresentationFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}</span>
+              </button>
+              <button
+                onClick={downloadPowerPointFile}
+                className="flex-1 sm:flex-none justify-center flex items-center space-x-2 px-3 sm:px-4 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-xs font-semibold shadow-lg transition-all"
+              >
+                <Presentation className="w-4 h-4" />
+                <span>Download PowerPoint (.PPTX)</span>
+              </button>
+            </>
+          ) : (
             <button
-              type="button"
-              onClick={togglePresentationFullscreen}
-              className="flex-1 sm:flex-none justify-center flex items-center space-x-2 px-3 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-semibold shadow-lg transition-all hover:bg-slate-800"
+              onClick={downloadDocFile}
+              className={`flex-1 sm:flex-none justify-center flex items-center space-x-2 px-3 sm:px-4 py-2.5 rounded-xl ${t.primary} text-xs font-semibold shadow-lg transition-all`}
             >
-              <span>{isPresentationFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}</span>
+              <Download className="w-4 h-4" />
+              <span>Download Complete Research (.DOC)</span>
             </button>
           )}
-          <button
-            onClick={downloadPowerPointFile}
-            className="flex-1 sm:flex-none justify-center flex items-center space-x-2 px-3 sm:px-4 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-xs font-semibold shadow-lg transition-all"
-          >
-            <Presentation className="w-4 h-4" />
-            <span>Download PowerPoint (.PPTX)</span>
-          </button>
-          <button
-            onClick={downloadDocFile}
-            className={`flex-1 sm:flex-none justify-center flex items-center space-x-2 px-3 sm:px-4 py-2.5 rounded-xl ${t.primary} text-xs font-semibold shadow-lg transition-all`}
-          >
-            <Download className="w-4 h-4" />
-            <span>Download Complete Research (.DOC)</span>
-          </button>
         </div>
       </div>
       </div>
