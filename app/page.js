@@ -498,13 +498,12 @@ export default function Home() {
       subtitle: "Life is like a rusty bicycle: noisy, shaky, and sometimes embarrassing, but if you keep riding, you still reach the destination.",
       category: "Closing Message",
       content: (
-        <div className="flex items-center justify-center min-h-70">
+        <div className="closing-slide flex items-center justify-center min-h-70">
           <div className="max-w-4xl text-center space-y-6 py-4">
             <div className="text-5xl sm:text-6xl">🚲</div>
-            <p className="text-lg sm:text-2xl font-semibold leading-relaxed text-slate-800">
+            <p className="closing-message text-lg sm:text-2xl font-semibold leading-relaxed text-slate-800">
               “Life is like a rusty bicycle: noisy, shaky, and sometimes embarrassing, but if you keep riding, you still reach the destination. So don’t stop when the road feels funny and hard—keep pedaling, because success is waiting beyond the struggle.”
             </p>
-            <p className="text-sm sm:text-base font-bold text-slate-700">Author: “Aji Waluyo”</p>
           </div>
         </div>
       )
@@ -1295,7 +1294,7 @@ Recommendations:
       {/* Main Content Area */}
       <main className={
         activeTab === 'presentation'
-          ? 'w-full max-w-[100vw] px-2 sm:px-4 lg:px-6 py-6 flex-1'
+          ? 'presentation-main w-full max-w-[100vw] px-2 sm:px-4 lg:px-6 py-6 flex-1'
           : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full'
       }>
         {activeTab === 'article' ? (
@@ -1661,7 +1660,7 @@ Recommendations:
         ) : (
           
           /* Presentation View */
-          <div className={`w-full max-w-[1700px] mx-auto p-4 sm:p-6 lg:p-8 rounded-2xl border border-slate-200 bg-white text-slate-800 flex flex-col min-h-[calc(100vh-190px)] shadow-sm ${isPresentationFullscreen ? 'sm:p-8 lg:p-10' : ''}`}>
+          <div className={`presentation-shell w-full max-w-[1700px] mx-auto p-4 sm:p-6 lg:p-8 rounded-2xl border border-slate-200 text-slate-800 flex flex-col min-h-[calc(100vh-190px)] shadow-sm ${isPresentationFullscreen ? 'sm:p-8 lg:p-10' : ''}`}>
             <style jsx>{`
               @keyframes presentationEnter {
                 0% {
@@ -1724,50 +1723,131 @@ Recommendations:
                 flex: 1 1 auto;
                 min-height: clamp(34rem, calc(100vh - 350px), 64rem);
                 animation: presentationEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-                background: linear-gradient(135deg, rgba(255,255,255,0.62), rgba(191,219,254,0.18), rgba(255,255,255,0.52));
+                background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(219,234,254,0.14), rgba(255,255,255,0.18));
                 border: 1px solid rgba(148, 163, 184, 0.25);
-                backdrop-filter: blur(16px);
-                -webkit-backdrop-filter: blur(16px);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
                 border-radius: 1.75rem;
                 padding: 2.5rem;
                 box-shadow: 0 30px 80px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255,255,255,0.7);
               }
 
+              .presentation-shell {
+                background:
+                  linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.1)),
+                  url('/aji4.jpeg') center / auto 82% no-repeat;
+                background-color: #ffffff;
+                background-attachment: fixed;
+              }
+
               .presentation-title {
                 animation: titleReveal 0.5s ease-out;
-                background: linear-gradient(90deg, #0f172a 0%, #2563eb 28%, #0f172a 52%, #2563eb 100%);
-                background-size: 200% auto;
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-                animation: titleReveal 0.5s ease-out, titleShine 2.2s ease-in-out 0.3s 1;
+                color: #020617;
+                font-weight: 900;
+                text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+                animation: titleReveal 0.5s ease-out;
                 letter-spacing: -0.03em;
               }
 
               .presentation-subtitle {
                 animation: titleReveal 0.7s ease-out;
-                color: rgba(15, 23, 42, 0.72);
+                color: #172554;
+                font-weight: 800;
+                text-shadow: 0 1px 1px rgba(255,255,255,0.65);
               }
 
               .presentation-header {
-                background: rgba(255,255,255,0.38);
+                background: rgba(255,255,255,0.24);
                 border: 1px solid rgba(148,163,184,0.2);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(3px);
+                -webkit-backdrop-filter: blur(3px);
                 border-radius: 1rem;
                 padding: 0.9rem 1rem;
               }
 
               .presentation-content-box {
-                background: rgba(255,255,255,0.34);
+                background: rgba(255,255,255,0.3);
                 border: 1px solid rgba(148,163,184,0.18);
                 border-radius: 1.15rem;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(3px);
+                -webkit-backdrop-filter: blur(3px);
                 box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
                 flex: 1 1 auto;
                 font-size: 1.45rem;
                 line-height: 1.7;
+                color: #0f172a;
+                font-weight: 700;
+                text-shadow: 0 1px 1px rgba(255,255,255,0.55);
+              }
+
+              .presentation-content-box p,
+              .presentation-content-box li,
+              .presentation-content-box td,
+              .presentation-content-box th {
+                font-weight: 600;
+                color: #020617;
+                text-shadow: 0 1px 1px rgba(255,255,255,0.55);
+              }
+
+              .presentation-content-box strong,
+              .presentation-content-box h2,
+              .presentation-content-box h3,
+              .presentation-content-box h4,
+              .presentation-header {
+                font-weight: 800;
+                color: #020617;
+                text-shadow: 0 1px 1px rgba(255,255,255,0.65);
+              }
+
+              .presentation-content-box .opacity-70,
+              .presentation-content-box .opacity-80 {
+                opacity: 1;
+              }
+
+              .closing-message {
+                color: #020617 !important;
+                font-weight: 800 !important;
+                text-shadow: 0 2px 2px rgba(255,255,255,0.8);
+              }
+
+              .closing-author {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 1rem;
+                z-index: 5;
+                overflow: hidden;
+                color: #020617;
+                font-size: 1.05rem;
+                font-weight: 900;
+                text-shadow: 0 1px 2px rgba(255,255,255,0.9);
+                white-space: nowrap;
+                text-align: left;
+              }
+
+              .closing-author span {
+                display: inline-block;
+                padding-left: 100%;
+                animation: authorMarquee 35s linear infinite;
+              }
+
+              .closing-author strong {
+                color: #1d4ed8;
+                font-size: 1.15em;
+                letter-spacing: 0.04em;
+              }
+
+              .closing-author-label {
+                color: #475569;
+                font-size: 0.78em;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+              }
+
+              @keyframes authorMarquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-100%); }
               }
 
               .presentation-content-box p,
@@ -1823,18 +1903,20 @@ Recommendations:
               }
 
               .nav-glow {
-                background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
-                color: white;
-                border: 1px solid rgba(59, 130, 246, 0.4);
-                box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+                background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+                color: #713f12;
+                border: 1px solid #facc15;
+                box-shadow: 0 10px 25px rgba(161, 98, 7, 0.25);
                 backdrop-filter: blur(12px);
                 -webkit-backdrop-filter: blur(12px);
                 font-weight: 700;
                 letter-spacing: 0.01em;
+                min-height: 3rem;
               }
 
               .nav-glow:hover:not(:disabled) {
-                box-shadow: 0 0 24px rgba(59, 130, 246, 0.35);
+                background: linear-gradient(135deg, #fef08a 0%, #facc15 100%);
+                box-shadow: 0 0 24px rgba(161, 98, 7, 0.35);
                 transform: translateY(-1px);
               }
 
@@ -1843,6 +1925,30 @@ Recommendations:
                 cursor: not-allowed;
                 transform: none;
                 box-shadow: none;
+              }
+
+              :global(html:fullscreen) .presentation-main {
+                max-width: none;
+                padding: 0;
+              }
+
+              :global(html:fullscreen) .presentation-shell {
+                max-width: none;
+                min-height: 100vh;
+                margin: 0;
+                border-radius: 0;
+              }
+
+              :global(html:fullscreen) .presentation-navigation {
+                position: sticky;
+                bottom: 0;
+                z-index: 20;
+                padding: 1rem;
+                border: 1px solid rgba(148, 163, 184, 0.35);
+                border-radius: 1rem;
+                background: rgba(255, 255, 255, 0.82);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
               }
 
               @media (max-width: 640px) {
@@ -1945,6 +2051,10 @@ Recommendations:
               <div className="presentation-content-box pt-4 p-4 sm:p-5">
                 {slides[currentSlide].content}
               </div>
+
+              {currentSlide === slides.length - 1 && (
+                <div className="closing-author"><span><em className="closing-author-label">Author:</em> <strong>Ajovi</strong> | Aji Waluyo - Novi</span></div>
+              )}
 
               {currentSlide === slides.length - 1 && (
                 <div className="absolute right-5 bottom-5">
