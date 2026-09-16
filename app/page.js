@@ -494,15 +494,15 @@ export default function Home() {
       )
     },
     {
-      title: "Keep pedaling, even when the road feels funny and hard—success is waiting beyond the struggle.",
-      subtitle: "Life is like a rusty bicycle: noisy, shaky, and sometimes embarrassing, but if you keep riding, you still reach the destination.",
+      title: "I am not chasing perfection. I am choosing growth.",
+      subtitle: "Little by little, I learn, I adapt, and I improve.",
       category: "Closing Message",
       content: (
         <div className="closing-slide flex items-center justify-center min-h-70">
           <div className="max-w-4xl text-center space-y-6 py-4">
-            <div className="text-5xl sm:text-6xl">🚲</div>
+            <div className="text-5xl sm:text-6xl">🌱</div>
             <p className="closing-message text-lg sm:text-2xl font-semibold leading-relaxed text-slate-800">
-              “Life is like a rusty bicycle: noisy, shaky, and sometimes embarrassing, but if you keep riding, you still reach the destination. So don’t stop when the road feels funny and hard—keep pedaling, because success is waiting beyond the struggle.”
+              “I am not chasing perfection. I am choosing growth. Little by little, I learn, I adapt, and I improve. Every small effort matters, every lesson shapes me, and every challenge helps me become stronger. I do not rush the process. I enjoy it, because real growth is built through patience, consistency, and perseverance.”
             </p>
           </div>
         </div>
